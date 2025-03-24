@@ -2,16 +2,23 @@ import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css"; // Import Leaflet CSS
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { AppContent } from "../context/AppContext";
+import { useContext } from "react";
 
 const StateMap = () => {
   const [states, setStates] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const navigate = useNavigate();
+  const { backendUrl, isLoggedin } = useContext(AppContent);
   const { id } = useParams();
 
   useEffect(() => {
     getMapData();
-  }, []);
+    if (!isLoggedin) {
+      navigate("/login");
+    }
+  }, [isLoggedin, navigate]);
 
   const getMapData = async () => {
     const url = backendUrl + `/api/map/${id}`;

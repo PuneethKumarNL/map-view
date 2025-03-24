@@ -4,14 +4,21 @@ import Navbar from "../components/Navbar";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import MapCard from "../components/MapCard";
+import { useNavigate } from "react-router-dom";
+import { AppContent } from "../context/AppContext";
+import { useContext } from "react";
 
 const Dashboard = () => {
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const navigate = useNavigate();
+  const { backendUrl, isLoggedin } = useContext(AppContent);
   const [statesData, setStateData] = useState([]);
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
     getStatesData();
-  }, []);
+    if (!isLoggedin) {
+      navigate("/login");
+    }
+  }, [isLoggedin, navigate]);
 
   const getStatesData = async () => {
     try {
@@ -24,6 +31,7 @@ const Dashboard = () => {
       toast.error(error.message);
     }
   };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-indigo-300 to-indigo-600 bg-cover bg-center p-24">
       <Navbar />
