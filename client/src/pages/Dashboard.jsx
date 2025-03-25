@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
-import Navbar from "../components/Navbar";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import MapCard from "../components/MapCard";
@@ -34,8 +32,6 @@ const Dashboard = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-indigo-300 to-indigo-600 bg-cover bg-center p-24">
-      <Navbar />
-
       <div>
         {isLoading ? (
           <p>Loading......</p>
