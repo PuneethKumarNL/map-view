@@ -56,7 +56,7 @@ This project is a web application developed using vite.js for the frontend and N
 
     ```bash
     npm install # or yarn install
-    npm start
+    npm run dev
     ```
 
 
