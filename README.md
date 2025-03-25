@@ -48,39 +48,20 @@ This project is a web application developed using vite.js for the frontend and N
 
     ```bash
     cd server
-    npm start  # or yarn install
-    cd ..
+    npm install
+    npm start 
     ```
 
 3.  **Install frontend dependencies:**
 
     ```bash
     npm install # or yarn install
+    npm start
     ```
 
-4.  **Create `.env.local` in the root directory:**
 
-    ```bash
-    JWT_SECRET=your-strong-random-secret-key
-    ```
 
-    Replace `your-strong-random-secret-key` with a secure, randomly generated secret.
-
-5.  **Start the backend server:**
-
-    ```bash
-    cd server
-    npm run dev # or node index.js or yarn dev
-    cd ..
-    ```
-
-6.  **Start the frontend development server:**
-
-    ```bash
-    npm run dev # or yarn dev
-    ```
-
-7.  **Open the application in your browser:**
+4.  **Open the application in your browser:**
 
     ```
     http://localhost:3000
